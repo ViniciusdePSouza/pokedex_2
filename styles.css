@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-shadow: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+
+    --blue-bg: #6ab7f5;
+    --pokemon-name: #3a444d;
+    --pokemon-info: #aaa;
+}
+
+#app {
+    display: grid;
+
+    min-height: 100vh;
+
+    place-content: center;
+}
+
+.poke-info {
+    font-weight: 600;
+    font-size: clamp(6px, 4.7vw, 25px);
+
+    position: absolute;
+
+    bottom: 40%;
+    left: 40%;
+
+    color: var(--pokemon-info)
+}
+
+body {
+    font-family: 'Oxanium', sans-serif;
+
+    min-height: 100vh;
+    background: linear-gradient(to bottom, var(--blue-bg), #fff);
+}
+
+main {
+    padding: 5rem;
+    position: relative;
+}
+
+.pokedex {
+    width: 100%;
+    max-width: 425px;
+}
+
+.pokemon-gif {
+    position: absolute;
+    z-index: 2;
+
+    bottom: 53%;
+    left: 50%;
+
+    transform: translate(-63%, 30%);
+
+    height: 15%
+}
+
+.pokemon-name {
+    color: var(--pokemon-name);
+    font-size: clamp(6px, 4.7vw, 25px;
+}
+
+.form{
+    
+}
