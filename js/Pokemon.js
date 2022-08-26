@@ -5,7 +5,7 @@ export class Pokemon {
         this.root = document.querySelector(root);
         this.displayManagement()
         this.getPokemon()
-        this.renderPokemon()
+        this.renderPokemon(currentPokeId)
         this.initApp()
     }
 
@@ -50,10 +50,4 @@ export class Pokemon {
             input.value = ''
         })
     }
-
-    initApp(){
-        let currentPokeId = 1
-        renderPokemon(currentPokeId)
-    }
-
 }
