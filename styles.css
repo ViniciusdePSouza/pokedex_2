@@ -139,9 +139,19 @@ button {
     align-items: center;
     text-align: center;
     justify-content: center;
+
+    transition: all 0.2s;
 }
 
 button:active {
     box-shadow: inset -4px 4px 0 #222;
     font-size: 0.9rem;
+}
+
+button:disabled{
+    background-color: rgb(182, 175, 175);
+    cursor: not-allowed;
+    box-shadow: inset -4px 4px 0 #222;
+    font-size: 0.9rem;
+
 }
