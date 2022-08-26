@@ -1,5 +1,5 @@
-import{ PokeAPI }  from "./PokeAPI.js";
-import { Pokemon } from "./Pokemon.js";
+import { PokeAPI } from "./PokeAPI.js";
+// import { Pokemon } from "./Pokemon.js";
 
 // const initApp = new Pokemon('#app')
 
@@ -12,39 +12,32 @@ const pokeGif = document.querySelector('.pokemon-gif')
 const form = document.querySelector('.form')
 const input = document.querySelector('#search')
 
-let currentPokeId = 1 
+let currentPokeId = 1
 
 
-async function renderPokemon (pokemon) {
-    pokeName.innerHTML = 'Loading ...'
+async function renderPokemon(pokemon) {
+
+    pokeName.innerHTML = 'Loadding...'
     pokeID.innerHTML = ''
-    
+
     const currentPokemon = await PokeAPI.getPokemon(pokemon)
 
-    if(currentPokemon) {
-        pokeName.innerHTML = currentPokemon.name 
-        pokeID.innerHTML = currentPokemon.id
-        pokeGif.src = currentPokemon['sprites']['versions']['generation-v']['black-white']['animated']['front_shiny']
-    
-        currentPokeId = currentPokemon.id
-    } else {
-        pokeName = 'Pokémon não encontrado :c'
-        pokeID = ''
-        pokeGif.src = 'https://data.whicdn.com/images/68563219/original.png'
-    }
+    pokeName.innerHTML = currentPokemon.name
+    pokeID.innerHTML = currentPokemon.id
+    pokeGif.src = currentPokemon['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
 
-    
-    if(currentPokeId == 1) {
+    currentPokeId = currentPokemon.id
+
+    if (currentPokeId == 1) {
         prevButton.disabled = true
     } else {
         prevButton.removeAttribute('disabled')
     }
-    if(currentPokeId == 905) {
+    if (currentPokeId == 905) {
         nextButton.disabled = true
     } else {
         nextButton.removeAttribute('disabled')
     }
-
 }
 
 form.addEventListener('submit', (event) => {
@@ -61,10 +54,10 @@ nextButton.addEventListener('click', () => {
 })
 
 prevButton.addEventListener('click', () => {
-    if(currentPokeId > 1) { 
+    if (currentPokeId > 1) {
         currentPokeId--
     }
-    
+
     renderPokemon(currentPokeId)
 })
 
