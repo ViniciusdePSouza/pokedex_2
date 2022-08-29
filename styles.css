@@ -88,7 +88,7 @@ main {
 }
 
 .form input {
-    width: 100%;
+    width: 97%;
 
     padding: 3%;
 
@@ -101,6 +101,8 @@ main {
 
     font-weight: 600;
     font-size: clamp(6px, 1.5vw, 2.5rem);
+
+    transform: translateX(5%);
 
     color: var(--pokemon-name);
 }
