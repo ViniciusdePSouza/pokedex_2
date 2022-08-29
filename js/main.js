@@ -2,7 +2,6 @@ import { PokeAPI } from "./PokeAPI.js";
 // import { Pokemon } from "./Pokemon.js";
 
 // const initApp = new Pokemon('#app')
-
 const nextButton = document.querySelector('.btn-next')
 const prevButton = document.querySelector('.btn-prev')
 
@@ -17,27 +16,33 @@ let currentPokeId = 1
 
 async function renderPokemon(pokemon) {
 
-    pokeName.innerHTML = 'Loadding...'
+    pokeName.innerHTML = 'Loading...'
     pokeID.innerHTML = ''
 
     const currentPokemon = await PokeAPI.getPokemon(pokemon)
 
-    pokeName.innerHTML = currentPokemon.name
-    pokeID.innerHTML = currentPokemon.id
-    pokeGif.src = currentPokemon['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
-
-    currentPokeId = currentPokemon.id
-
-    if (currentPokeId == 1) {
-        prevButton.disabled = true
+    if  (currentPokemon.id){
+        pokeName.innerHTML = currentPokemon.name
+        pokeID.innerHTML = currentPokemon.id
+        pokeGif.src = currentPokemon['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
+    
+        currentPokeId = currentPokemon.id
+    
+        if (currentPokeId == 1) {
+            prevButton.disabled = true
+        } else {
+            prevButton.removeAttribute('disabled')
+        }
+        if (currentPokeId == 905) {
+            nextButton.disabled = true
+        } else {
+            nextButton.removeAttribute('disabled')
+        }
     } else {
-        prevButton.removeAttribute('disabled')
+        pokeName.innerHTML = 'Pokémon not found'
+        pokeGif.src = 'https://media1.giphy.com/media/PhZ4hE8XVEoOkWA4db/giphy.gif?cid=790b761150ffb43c6b9f49cfc016af350f02f7ca67884ea2&rid=giphy.gif&ct=s'
     }
-    if (currentPokeId == 905) {
-        nextButton.disabled = true
-    } else {
-        nextButton.removeAttribute('disabled')
-    }
+
 }
 
 form.addEventListener('submit', (event) => {
